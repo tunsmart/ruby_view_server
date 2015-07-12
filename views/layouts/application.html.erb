@@ -3,7 +3,6 @@
       return "<a href='#{url}'>#{name}</a>"
    end
   %>
-
 <html>
   <body>
     <h1>Hello there</h1>
@@ -12,6 +11,22 @@
       <p>Am sure you are doing good</p>
       <%= link_to('This is a link to google', 'http://google.com') %>
     </p>
+    <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+      Hello there <%= @request.query['first_name'] %>
+    <% else %>
+      Enter thy name
+    <% end %>
+
+            <form method='post' action="<%= @request.path %>">
+                First name: <input type="text" name="first_name" placeholder='first name'/><br />
+                <input type="submit" value="Submit" />
+            </form>
+            <form method='post' action="<%= @request.path %>">
+              <input type="radio" name="sex" value="male" checked>Male
+              <br>
+              <input type="radio" name="sex" value="female">Female
+            </form>
+
     <hr />
     <div>
       <%= yield %>
