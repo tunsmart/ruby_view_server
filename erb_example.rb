@@ -10,7 +10,7 @@ erb_string = "<h2><%= name.capitalize %></h2>"
 template = ERB.new(erb_string)
 puts template.result(binding)
 
-fruits = ["oranges", "apples", "avocado", "banana"]
-template = ERB.new "My best fruit is: <%= fruits.each do |x|  puts x
-                                          end %>"
+template = ERB.new "<% ['oranges', 'apples', 'avocado', 'banana'].each do |x| %>
+                     <%= puts My best fruits is : x %>
+                     <% end %>"
 puts template.result(binding)
